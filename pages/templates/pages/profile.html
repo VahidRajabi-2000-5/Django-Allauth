@@ -1,0 +1,16 @@
+{% extends '_base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+  <div class="containe">
+    <div class="cart shadow p-5 my-3 text-center">
+        <h1>{{pro.username}}</h1>
+        <br>
+        <h4>{{pro.email}}</h4>
+        <div class="container">
+          <a class = 'btn btn-success mt-5' href="{% url 'profile_update' user.id %}">Profile Edit</a>
+        </div>
+    </div>
+  </div>
+{% endblock content %}
