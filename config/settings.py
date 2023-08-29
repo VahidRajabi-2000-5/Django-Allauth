@@ -37,9 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+    'django.contrib.sites',
     
     # Third Party
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.gitlab',
+    'allauth.socialaccount.providers.bitbucket',
+    'allauth.socialaccount.providers.discord',
     'crispy_forms',
     'crispy_bootstrap5',
     
@@ -124,7 +132,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -137,3 +146,43 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 # Crispy Settings
 CRISPY_TEMPLATE_PACK ='bootstrap5'
 CRISPY_ALLOWD_TEMPLATE_PACK ='bootstrap5'
+
+
+# Django Allauth Settings
+
+LOGIN_URL = 'account_login'
+LOGIN_REDIRECT_URL ='home'
+LOGOUT_REDIRECT_URL = 'account_login'
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID = 1
+
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
+ACCOUNT_AUTHENTICATION_METHOD ='username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_UNIQUE_USERNAME = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = 'account_login'
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'profile'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587 
+# EMAIL_HOST_USER = 'vahidrajabi.software@gmail.com'
+# EMAIL_HOST_PASSWORD = 'wduvgzvztxsqnupa'
+
+# Custom Signup Form
+""" ACCOUNT_FORMS = {
+    'signup': 'accounts.forms.CustomSignupForm'
+} """

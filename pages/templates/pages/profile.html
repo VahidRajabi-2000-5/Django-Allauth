@@ -3,6 +3,7 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
+
   <div class="containe">
     <div class="cart shadow p-5 my-3 text-center">
         <h1>{{pro.username}}</h1>
@@ -10,6 +11,7 @@
         <h4>{{pro.email}}</h4>
         <div class="container">
           <a class = 'btn btn-success mt-5' href="{% url 'profile_update' user.id %}">Profile Edit</a>
+          <a class = 'btn btn-success mt-5' href="{% url 'account_change_password' %}">Password Change</a>
         </div>
     </div>
   </div>

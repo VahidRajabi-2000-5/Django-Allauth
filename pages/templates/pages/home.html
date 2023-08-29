@@ -5,7 +5,11 @@
 {% block content %}
   <div class="containe">
     <div class="cart shadow p-5 my-3 text-center">
+      {% if user.is_authenticated %}
+        <h1>Welcome to my website {{user.username}}</h1>
+      {% else %}
         <h1>Welcome to my website</h1>
+      {% endif %}
     </div>
   </div>
 {% endblock content %}
