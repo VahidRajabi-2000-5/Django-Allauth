@@ -186,3 +186,5 @@ EMAIL_PORT = 587
 """ ACCOUNT_FORMS = {
     'signup': 'accounts.forms.CustomSignupForm'
 } """
+
+# Social Account

@@ -87,7 +87,8 @@ EMAIL_PORT پورت سرور ایمیل را مشخص می‌کند. برای Gm
 ================================================================
 توجه داشته باشید که تگ {% load account %} تنها برای صفحاتی که مرتبط با مدیریت کاربری و احراز هویت هستند، معمولاً به کار می‌رود و در صفحات دیگر از آن استفاده نمی‌شود.
 
-
+signup --> verification_sent.html --> console (link) --> email_confirm.html --> login.html(ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = 'account_login')
+passowrd_reset.html --> password_reset_done.html --> console(link) --> password_reset_from_key.html --> password_reset_from_key_done.html
 
 
 

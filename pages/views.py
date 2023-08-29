@@ -4,7 +4,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 
 
-from accounts.forms import CustomUserChangeForm
+from accounts.forms import CustomUserChangeFormWithoutPassword
 
 
 class HomePageView(generic.TemplateView):
@@ -18,9 +18,10 @@ class ProfileView(generic.DeleteView):
     context_object_name = 'pro'
     
 
+        
 class ProfileUpdateView(generic.UpdateView):
     model = get_user_model()
-    form_class = CustomUserChangeForm
+    form_class = CustomUserChangeFormWithoutPassword
     template_name = 'pages/profile_update.html'
     context_object_name ='form'
     
