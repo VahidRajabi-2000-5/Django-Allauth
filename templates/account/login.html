@@ -2,6 +2,7 @@
 
 {% load i18n %} 
 {% load static %}
+{% load socialaccount %}
 {% load crispy_forms_tags %} 
 
 {% block style  %}
@@ -29,12 +30,21 @@
       <div class="line-with-middle-sep">
         <span> {% trans "Or" %} </span>
       </div>
-      <a href="{% url 'account_signup' %}" class="btn btn-primary mt-2 mb-3 w-100"
-        >{% trans "Sign Up" %} </a
-      >
+      <a href="{% url 'account_signup' %}" class="btn btn-primary mt-2 mb-3 w-100">{% trans "Sign Up" %} </a>
+      <a onclick= "submit_google()" class="btn btn-primary mt-2 mb-3 w-100">{% trans "Login With Google" %} </a>
     </form>
   </div>
 </div>
+
+<form action="/accounts/google/login/" method='POST' id='google_form' >
+  {% csrf_token %}
+</form>
+<script>
+    {% comment %} اسم دلخواه برای تابع {% endcomment %}
+  function submit_google(){
+    document.getElementById('google_form').submit();
+  }
+</script>
 
 {% endblock content %}
   

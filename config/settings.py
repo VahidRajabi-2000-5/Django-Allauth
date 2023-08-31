@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-a=qc6h*&8z@edou6bb6nxvvx42i5ih_x5sdu%75bc$wiudj)vl'
+SECRET_KEY ="django-insecure-a=qc6h*&8z@edou6bb6nxvvx42i5ih_x5sdu%75bc$wiudj)vl"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -46,6 +48,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.gitlab',
+    'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.bitbucket',
     'allauth.socialaccount.providers.discord',
     'crispy_forms',
@@ -67,7 +70,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
-
+ 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -162,8 +165,10 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-SITE_ID = 1
+# SocialAccount 
+SITE_ID = 2
 
+# allauth configuration 
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 ACCOUNT_AUTHENTICATION_METHOD ='username_email'
@@ -188,3 +193,16 @@ EMAIL_PORT = 587
 } """
 
 # Social Account
+
+SOCIALACCOUNT_PROVIDERS ={
+    'google':{
+        'SCOPE':[
+            'profile',
+            'email',
+        ],
+        
+        'AUTH_PARAMS':{
+            'access_type':'online',
+        },
+    }
+}

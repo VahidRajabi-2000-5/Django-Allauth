@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,12 +19,12 @@
   <body>
     <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
       <div class="bg-dark p-4">
-        <h5 class="text-body-emphasis h4"><a class='text-white text-decoration-none' href="{% url 'home' %}">Home</a></h5>
+        <h5 class="text-body-emphasis h4"><a class='text-white text-decoration-none' href="{% url 'home' %}">{% trans "Home" %}</a></h5>
         {% if user.is_authenticated %}
-          <h5 class="text-body-emphasis h4"><a class='text-white text-decoration-none' href="{% url 'profile' user.id %}">ProFile</a></h5>
-          <h5><a class='text-white text-decoration-none'  href="{% url 'account_logout' %}">Sign Out</a></h5>
+          <h5 class="text-body-emphasis h4"><a class='text-white text-decoration-none' href="{% url 'profile' user.id %}">{% trans "ProFile" %}</a></h5>
+          <h5><a class='text-white text-decoration-none'  href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a></h5>
         {% else %}
-            <a class='text-white text-decoration-none'  href="{% url 'account_login' %}">Sign In</a> <span class='text-white'>|</span> <a class='text-white text-decoration-none'  href="{% url 'account_signup' %}">Sign Up</a>
+            <a class='text-white text-decoration-none'  href="{% url 'account_login' %}">{% trans "Sign In" %}</a> <span class='text-white'>|</span> <a class='text-white text-decoration-none'  href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
         {% endif %}
       </div>
     </div>
